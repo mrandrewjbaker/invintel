@@ -1,6 +1,8 @@
 var https = require('https'),     
     fs =    require('fs'),
     moment = require('moment');
+    
+require('dotenv').config();
 
 var options = {
     key: fs.readFileSync('/etc/letsencrypt/live/andrewjamesbaker.me/privkey.pem'),
@@ -20,8 +22,8 @@ const invintel_db = require('knex')({
     client: 'mysql',
     connection: {
       host : '127.0.0.1',
-      user : 'root',
-      password : 'Fr8Trayne!',
+      user : process.env.MYSQL_user,
+      password : process.env.MYSQL_password,
       database : 'invintel',
       charset : 'utf8mb4'
     }
